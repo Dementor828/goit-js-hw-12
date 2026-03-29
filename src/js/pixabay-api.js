@@ -5,17 +5,19 @@ const axiosInstance = axios.create({
   baseURL: 'https://pixabay.com/api',
 });
 
-
-function getImagesByQuery(query) {
+async function getImagesByQuery(query, page) {
   const params = {
     key: API_KEY,
     q: query,
     image_type: 'photo',
     orientation: 'horizontal',
     safesearch: true,
+    page,
+    per_page: 15,
   };
 
-  return axiosInstance.get('/', { params }).then(r => r.data);
+  const response = await axiosInstance.get('/', { params });
+  return response.data;
 }
 
 export { getImagesByQuery };

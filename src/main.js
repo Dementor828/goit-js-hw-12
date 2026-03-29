@@ -82,6 +82,7 @@ refs.form.addEventListener('submit', async e => {
 refs.loadMoreBtn.addEventListener('click', async () => {
   const nextPage = currentPage + 1;
 
+  hideLoadMoreButton();
   showLoader();
 
   try {
@@ -89,7 +90,6 @@ refs.loadMoreBtn.addEventListener('click', async () => {
     const hits = data.hits;
 
     if (hits.length === 0) {
-      hideLoadMoreButton();
       iziToast.info(endOfSearchResultsMessage);
       return;
     }
@@ -100,6 +100,7 @@ refs.loadMoreBtn.addEventListener('click', async () => {
     scrollByTwoCardHeights();
   } catch {
     iziToast.error(requestErrorMessage);
+    showLoadMoreButton();
   } finally {
     hideLoader();
   }

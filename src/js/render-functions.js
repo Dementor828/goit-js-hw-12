@@ -17,6 +17,7 @@ function createMarkup(images) {
 
 function createImageMarkup(image) {
   return `
+    <li class="gallery__item">
     <a href="${image.largeImageURL}" class="photo-link">
       <div class="photo-card">
         <img
@@ -45,6 +46,7 @@ function createImageMarkup(image) {
         </ul>
       </div>
     </a>
+    </li>
   `;
 }
 
